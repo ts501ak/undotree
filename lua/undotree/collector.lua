@@ -19,7 +19,6 @@ local default_opt = {
   position = "left", -- "right", "bottom"
   diff_previewer = Diff:new(),
   window = {
-    winblend = 30,
     -- TODO: maybe change it to a suitable number
     height = 0,
     width = 0,
@@ -181,12 +180,8 @@ end
 function Collector:create_popup_win(bufnr, popup_opts)
   local what = bufnr or ""
   local win, opts = popup.create(what, popup_opts)
-  vim.api.nvim_win_set_option(win, "winblend", self.window.winblend)
   vim.api.nvim_win_set_option(win, "wrap", false)
   local border_win = opts and opts.border and opts.border.win_id
-  if border_win then
-    vim.api.nvim_win_set_option(border_win, "winblend", self.window.winblend)
-  end
   return win, opts, border_win
 end
 
