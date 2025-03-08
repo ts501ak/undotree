@@ -232,6 +232,9 @@ function Collector:get_window_option(max_columns, max_lines)
       opts.diff_opts.width = math.floor(max_columns * 0.7)
     end
     -- borderhighlight, highlight, titlehighlight
+    opts.diff_opts.highlight = "NormalFloat"
+    opts.diff_opts.borderhighlight= "FloatBorder"
+    opts.diff_opts.titlehighlight = "FloatTitle"
   else
     self.window.height = if_nil(self.window.height, 0)
     local height = math.max(self.window.height, min_lines)
